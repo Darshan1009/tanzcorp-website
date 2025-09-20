@@ -201,110 +201,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Form validation and submission
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const formData = new FormData(contactForm);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const message = formData.get('message');
-    
-    // Clear previous errors
-    clearErrors();
-    
-    // Validate form
-    let isValid = true;
-    
-    if (!name.trim()) {
-        showError('name-error', 'Name is required');
-        isValid = false;
-    }
-    
-    if (!email.trim()) {
-        showError('email-error', 'Email is required');
-        isValid = false;
-    } else if (!isValidEmail(email)) {
-        showError('email-error', 'Please enter a valid email address');
-        isValid = false;
-    }
-    
-    if (!message.trim()) {
-        showError('message-error', 'Message is required');
-        isValid = false;
-    }
-    
-    if (!isValid) {
-        return;
-    }
-    
-    // Show loading state
-    const submitButton = contactForm.querySelector('.submit-button');
-    const buttonText = submitButton.querySelector('.button-text');
-    const buttonLoader = submitButton.querySelector('.button-loader');
-    
-    submitButton.classList.add('loading');
-    submitButton.disabled = true;
-    
-    // Simulate form submission (replace with actual API call)
-    try {
-        await simulateFormSubmission();
-        showFormMessage('success', 'Thank you! Your message has been sent successfully.');
-        contactForm.reset();
-    } catch (error) {
-        showFormMessage('error', 'Sorry, there was an error sending your message. Please try again.');
-    } finally {
-        submitButton.classList.remove('loading');
-        submitButton.disabled = false;
-    }
-});
+//FORM VALIDATION REMOVED - DARSHAN'S PAGE
+//UODATING WITH HUBSPOT INTEGRATION
 
-// Form validation helper functions
-function clearErrors() {
-    const errorMessages = document.querySelectorAll('.error-message');
-    errorMessages.forEach(error => {
-        error.textContent = '';
-    });
-}
-
-function showError(errorId, message) {
-    const errorElement = document.getElementById(errorId);
-    if (errorElement) {
-        errorElement.textContent = message;
-    }
-}
-
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-function showFormMessage(type, message) {
-    const messageElement = document.getElementById('form-message');
-    messageElement.className = `form-message ${type}`;
-    messageElement.textContent = message;
-    messageElement.style.display = 'block';
-    
-    // Hide message after 5 seconds
-    setTimeout(() => {
-        messageElement.style.display = 'none';
-    }, 5000);
-}
-
-// Simulate form submission (replace with actual API call)
-function simulateFormSubmission() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            // Simulate random success/failure for demo
-            if (Math.random() > 0.1) { // 90% success rate
-                resolve();
-            } else {
-                reject(new Error('Simulated error'));
-            }
-        }, 2000);
-    });
-}
-
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/243912944.js"></script>
+//VERCEL ME UPDATE KRDE
 // Service card hover effects
 document.addEventListener('DOMContentLoaded', () => {
     const serviceCards = document.querySelectorAll('.service-card');
